@@ -29,7 +29,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Executar testes (substitua com seu comando de teste)
-		bat(script: 'npm test C:\Users\Ramon Phelipe Padilh\.jenkins\workspace\DevOps\src\teste.test.js', returnStatus: true)
+		bat(script: "npm test C:\\Users\\Ramon Phelipe Padilh\\.jenkins\\workspace\\DevOps\\src\\teste.test.js", returnStatus: true)
             }
         }
         
