@@ -10,6 +10,11 @@ pipeline {
                 }
             }
         }
+	stage('Clean') {
+		steps {
+			bat 'npm cache clean -f'
+		}
+	}
         
         stage('Build') {
             steps {
