@@ -32,15 +32,7 @@ pipeline {
 
         stage('OWASP Dependency-Check') {
             steps {
-                script {
-                    def tool = tool name: 'OWASP Dependency-Check', type: 'DependencyCheckBuilder'
-                    if (tool) {
-                        def cmd = "${tool}/bin/dependency-check.bat"
-                        bat "${cmd} --project DevOps --scan src/"
-                    } else {
-                        error "Ferramenta OWASP Dependency-Check não encontrada. Verifique a configuração global."
-                    }
-                }
+		dependencyCheck additionalArguments: '--project DevOps', odcInstallation: 'OWASP Dependency-Check'
             }
         }
 
