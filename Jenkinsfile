@@ -1,21 +1,39 @@
 pipeline {
     agent any
+    
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout do código-fonte do repositório Git
+                script {
+                    checkout scm
+                }
+            }
+        }
+        
         stage('Build') {
             steps {
-                bat 'mvn clean compile -U'
+                // Instalar as dependências do projeto React
+                bat 'npm install'
+                
+                // Build do projeto React
+                bat 'npm run build'
             }
         }
+        
         stage('Test') {
             steps {
-                bat 'mvn test'
+                // Executar testes (substitua com seu comando de teste)
+                bat 'npm test'
             }
         }
-
+        
         stage('Deploy') {
             steps {
-                bat 'mvn install'
-	    	}
+                // Implantação (substitua com seus comandos de implantação)
+                bat 'npm run deploy'
+            }
         }
     }
 }
+
